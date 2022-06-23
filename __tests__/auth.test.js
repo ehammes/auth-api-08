@@ -2,6 +2,7 @@
 
 const { server } = require('../src/server.js');
 const { db } = require('../src/auth/models');
+const base64 = require('base-64');
 const supertest = require('supertest');
 const mockRequest = supertest(server);
 
@@ -21,18 +22,18 @@ describe('Auth Tests', () => {
     });
 
     console.log('Response Body', response.body);
-    expect(response.status).toEqual(200);
-    expect(response.body.username).toEqual('eliabeth');
-    expect(response.body.password).toBeTruthy();
-    expect(response.body.password).not.toEqual('password1234');
+    expect(response.status).toEqual(201);
+    expect(response.body.user.username).toEqual('elizabeth');
+    expect(response.body.user.password).toBeTruthy();
+    expect(response.body.user.password).not.toEqual('password1234');
   });
 
   test ('allows a user to signin to their account with a POST to /signin', async () => {
-    let authStr = 'newUser:password1234';
+    let authStr = 'elizabeth:password1234';
     let encodedStr = base64.encode(authStr);
     let response = await mockRequest.post('/signin').set('Authorization', `Basic ${encodedStr}`);
     expect(response.status).toEqual(200);
-    expect(response.body.username).toEqual('newUser');
+    expect(response.body.user.username).toEqual('elizabeth');
   });
 
 });

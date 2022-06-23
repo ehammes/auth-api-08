@@ -27,7 +27,7 @@ describe('Access Control Tests', () => {
 
 
   // POST /api/v2/:model with a bearer token that has create permissions adds an item to the DB and returns an object with the added item
-  test('Authorized to create', async () => {
+  test('Authorized to create food item', async () => {
     let response = await request.get('/api/v2/create').set('Authorization', `Bearer ${testUser.token}`);
     let createFood = await mockRequest.post('/api/v2/food').send(food1);
 
@@ -39,7 +39,7 @@ describe('Access Control Tests', () => {
   });
 
   // GET /api/v2/:model with a bearer token that has read permissions returns a list of :model items
-  test('Authorized to read', async () => {
+  test('Authorized to read all food items', async () => {
     let response = await request.get('/api/v2/read').set('Authorization', `Bearer ${testUser.token}`);
     let food = await mockRequest.get('/api/v2/food');
 
@@ -51,7 +51,7 @@ describe('Access Control Tests', () => {
   });
   
   // GET /api/v2/:model/ID with a bearer token that has read permissions returns a single item by ID
-  test('Authorized to read', async () => {
+  test('Authorized to read a single food item by ID', async () => {
     let response = await request.get('/api/v2/read').set('Authorization', `Bearer ${testUser.token}`);
     let food1 = await mockRequest.get('/api/v2/food/1');
 
@@ -63,7 +63,7 @@ describe('Access Control Tests', () => {
   });
   
   // PUT /api/v2/:model/ID with a bearer token that has update permissions returns a single, updated item by ID
-  test('Authorized to update', async () => {
+  test('Authorized to update a food item by ID', async () => {
     let response = await request.get('/api/v2/update').set('Authorization', `Bearer ${testUser.token}`);
     await mockRequest.post('/food').send(food2);
     let food1 = await mockRequest.get(`/api/v2/food/1`);
@@ -78,7 +78,7 @@ describe('Access Control Tests', () => {
   
   // DELETE /api/v2/:model/ID with a bearer token that has delete permissions returns an empty object. Subsequent GET for the same ID should result in nothing found
 
-  test('Authorized to update', async () => {
+  test('Authorized to delete a food item by id', async () => {
     let response = await request.get('/update').set('Authorization', `Bearer ${testUser.token}`);
     await mockRequest.delete('/api/v2/food/1');
     let getFood = await mockRequest.get(`/api/v2/food/1`);
@@ -100,7 +100,7 @@ describe('Access Control Tests', () => {
 
 
   // POST /api/v2/:model with a bearer token that has create permissions adds an item to the DB and returns an object with the added item
-  test('Authorized to create', async () => {
+  test('Authorized to create a clothing item', async () => {
     let response = await request.get('/api/v2/create').set('Authorization', `Bearer ${testUser.token}`);
     let createClothes = await mockRequest.post('/api/v2/clothes').send(clothes1);
 
@@ -112,7 +112,7 @@ describe('Access Control Tests', () => {
   });
 
   // GET /api/v2/:model with a bearer token that has read permissions returns a list of :model items
-  test('Authorized to read', async () => {
+  test('Authorized to read all clothing items', async () => {
     let response = await request.get('/api/v2/read').set('Authorization', `Bearer ${testUser.token}`);
     let clothes = await mockRequest.get('/api/v2/clothes');
 
@@ -124,7 +124,7 @@ describe('Access Control Tests', () => {
   });
   
   // GET /api/v2/:model/ID with a bearer token that has read permissions returns a single item by ID
-  test('Authorized to read', async () => {
+  test('Authorized to read a single clothing item by ID', async () => {
     let response = await request.get('/api/v2/read').set('Authorization', `Bearer ${testUser.token}`);
     let clothes1 = await mockRequest.get('/api/v2/clothes/1');
 
@@ -136,7 +136,7 @@ describe('Access Control Tests', () => {
   });
   
   // PUT /api/v2/:model/ID with a bearer token that has update permissions returns a single, updated item by ID
-  test('Authorized to update', async () => {
+  test('Authorized to update a single clothing itme', async () => {
     let response = await request.get('/api/v2/update').set('Authorization', `Bearer ${testUser.token}`);
     await mockRequest.post('/clothes').send(clothes2);
     let clothes1 = await mockRequest.get(`/api/v2/clothes/1`);
@@ -151,7 +151,7 @@ describe('Access Control Tests', () => {
   
   // DELETE /api/v2/:model/ID with a bearer token that has delete permissions returns an empty object. Subsequent GET for the same ID should result in nothing found
 
-  test('Authorized to update', async () => {
+  test('Authorized to delete a clothing item by ID', async () => {
     let response = await request.get('/update').set('Authorization', `Bearer ${testUser.token}`);
     await mockRequest.delete('/api/v2/clothes/1');
     let getClothes = await mockRequest.get(`/api/v2/clothes/1`);
