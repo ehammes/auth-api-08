@@ -22,36 +22,55 @@ Specifically, we want to make the following restrictions:
 
 ### Links and Resources
 
-- [ci/cd](https://github.com/ehammes/auth-api-08/actions) (GitHub Actions)
-- [back-end server url Prod]() (Heroku) - TBD
+* [ci/cd](https://github.com/ehammes/auth-api-08/actions) (GitHub Actions)
 
 ### Setup
 
-#### `.env` requirements (where applicable)
+#### `.env` requirements
 
-None
+* PORT
+* SECRET
+* DATABASE_URL
 
-#### How to initialize/run your application (where applicable)
+#### How to initialize/run your application
 
-- nodemon
-
-#### How to use your library (where applicable)
+* nodemon
 
 #### Features / Routes
 
 Specific routes to hit
 
-- POST : `/signup`
-- POST : `/signin`
-- GET : `/users`
-- GET : `/secret`
-
-Models:
-- `api/v1/foods`
-- `api/v2/foods`
-- `api/v1/clothes`
-- `api/v2/clothes`
+* POST : `/signup`
+* POST : `/signin`
+* GET : `/users`
+* GET : `/secret`
+* V1 Routes:
+  * GET : `/api/v1/food`
+  * GET : `/api/v1/food/1`
+  * POST : `/api/v1/food`
+  * PUT : `/api/v1/food/1`
+  * DELETE : `/api/v1/food/1`
+  * GET : `/api/v1/clothes`
+  * GET : `/api/v1/clothes/1`
+  * POST : `/api/v1/clothes`
+  * PUT : `/api/v1/clothes/1`
+  * DELETE : `/api/v1/clothes/1`
+* V2 Routes:
+  * GET : `/api/v2/food`
+  * GET : `/api/v2/food/1`
+  * POST : `/api/v2/food`
+  * PUT : `/api/v2/food/1`
+  * DELETE : `/api/v2/food/1`
+  * GET : `/api/v2/clothes`
+  * GET : `/api/v2/clothes/1`
+  * POST : `/api/v2/clothes`
+  * PUT : `/api/v2/clothes/1`
+  * DELETE : `/api/v2/clothes/1`
 
 #### Tests
 
-- Run tests using `npm test`
+* Run tests using `npm test`
+
+#### UML
+
+![lab 08 uml](/public/img/lab08_uml.jpg)
