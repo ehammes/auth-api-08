@@ -1,7 +1,7 @@
 'use strict';
 
 const { server } = require('../src/server.js');
-const { db } = require('../src/auth/models');
+const { db } = require('../src/models');
 const base64 = require('base-64');
 const supertest = require('supertest');
 const mockRequest = supertest(server);
